@@ -1,18 +1,24 @@
-a=1.09
-b=1
-p=a/(a+b)
-q=b/(a+b)
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 
-def factorial(z):
-    n=1
-    for i in range(1,z+1):n=n*i
-    return n 
+import numpy
+from statistics import mode, StatisticsError
+from collections import Counter
 
-def perm(x,y):
-    return factorial(x)/(factorial(x-y)*factorial(y))    
+N = int(input())
+X = list(map(int, input().split()))
 
-prob=0    
-for i in range(3,7):
-    prob=prob+perm(6,i)*(p**i)*(q**(6-i))
+print(numpy.mean(X))
+print(numpy.median(X))
 
-print(round(prob,3)) 
+# check if multi-modal or not [(mode=wholeList), (mode=partList)==> error thrown]
+try: 
+    print(mode(X))
+except StatisticsError:
+    X.sort()
+    print(Counter(X).most_common(1)[0][0])
+    
+# Method-2 Mode
+# def mode(arr):
+#     cont = [X.count(i) for i in X];
+#     return arr[cont.index(max(cont))];
+
