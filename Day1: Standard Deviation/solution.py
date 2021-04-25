@@ -1,18 +1,24 @@
-a=1.09
-b=1
-p=a/(a+b)
-q=b/(a+b)
 
-def factorial(z):
-    n=1
-    for i in range(1,z+1):n=n*i
-    return n 
+import math
+import os
+import random
+import re
+import sys
 
-def perm(x,y):
-    return factorial(x)/(factorial(x-y)*factorial(y))    
+# Complete the 'stdDev' function below.
+# The function accepts INTEGER_ARRAY arr as parameter.
 
-prob=0    
-for i in range(3,7):
-    prob=prob+perm(6,i)*(p**i)*(q**(6-i))
+def squared_diff(arr,avg):
+    sdiff=sum([(arr[i]-avg)**2 for i in range(len(arr))])
+    return(sdiff)
 
-print(round(prob,3)) 
+def stdDev(arr):
+    avg=sum(arr)/len(arr)
+    stddev2= squared_diff(arr,avg)/len(arr)
+    print(math.sqrt(stddev2))
+    
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    vals = list(map(int, input().rstrip().split()))
+    stdDev(vals)
