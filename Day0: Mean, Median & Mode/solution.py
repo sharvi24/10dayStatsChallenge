@@ -1,24 +1,26 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
+#!/bin/python3
 
-import numpy
-from statistics import mode, StatisticsError
-from collections import Counter
+import math
+import os
+import random
+import re
+import sys
 
-N = int(input())
-X = list(map(int, input().split()))
+# Complete the 'weightedMean' function below.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY X
+#  2. INTEGER_ARRAY W
 
-print(numpy.mean(X))
-print(numpy.median(X))
+def weightedMean(X, W):
+    wsum=sum([X[i]*W[i] for i in range(len(X))])
+    print(round(wsum/sum(W),1)) 
 
-# check if multi-modal or not [(mode=wholeList), (mode=partList)==> error thrown]
-try: 
-    print(mode(X))
-except StatisticsError:
-    X.sort()
-    print(Counter(X).most_common(1)[0][0])
-    
-# Method-2 Mode
-# def mode(arr):
-#     cont = [X.count(i) for i in X];
-#     return arr[cont.index(max(cont))];
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    vals = list(map(int, input().split()))
+
+    weights = list(map(int, input().split()))
+
+    weightedMean(vals, weights)
 
