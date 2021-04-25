@@ -17,10 +17,7 @@ def weightedMean(X, W):
 
 if __name__ == '__main__':
     n = int(input().strip())
-
     vals = list(map(int, input().split()))
-
     weights = list(map(int, input().split()))
-
     weightedMean(vals, weights)
 
