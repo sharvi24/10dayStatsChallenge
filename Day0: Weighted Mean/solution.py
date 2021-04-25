@@ -1,18 +1,22 @@
-a=1.09
-b=1
-p=a/(a+b)
-q=b/(a+b)
+#!/bin/python3
 
-def factorial(z):
-    n=1
-    for i in range(1,z+1):n=n*i
-    return n 
+import math
+import os
+import random
+import re
+import sys
 
-def perm(x,y):
-    return factorial(x)/(factorial(x-y)*factorial(y))    
+# Complete the 'weightedMean' function below.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY X
+#  2. INTEGER_ARRAY W
 
-prob=0    
-for i in range(3,7):
-    prob=prob+perm(6,i)*(p**i)*(q**(6-i))
+def weightedMean(X, W):
+    wsum=sum([X[i]*W[i] for i in range(len(X))])
+    print(round(wsum/sum(W),1)) 
 
-print(round(prob,3)) 
+if __name__ == '__main__':
+    n = int(input())
+    vals = list(map(int, input().split()))
+    weights = list(map(int, input().split()))
+    weightedMean(vals, weights)
