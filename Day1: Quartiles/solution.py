@@ -1,18 +1,34 @@
-a=1.09
-b=1
-p=a/(a+b)
-q=b/(a+b)
+#!/bin/python3
 
-def factorial(z):
-    n=1
-    for i in range(1,z+1):n=n*i
-    return n 
+import math
+import os
+import random
+import re
+import sys
+ 
+# Complete the 'quartiles' function below.
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY arr as a parameter.
 
-def perm(x,y):
-    return factorial(x)/(factorial(x-y)*factorial(y))    
+def median(array):
+    n=len(array)
+    if n%2!=0: return array[(n-1)//2]
+    else: return int((array[(n-1)//2]+array[n//2])/2)
+    
+def quartiles(arr):
+    n=len(arr)
+    arr.sort()
+    q1=median(arr[:(n//2)])
+    q2=median(arr)
+    q3=median(arr[(n+1)//2:])
+    return [q1,q2,q3]
 
-prob=0    
-for i in range(3,7):
-    prob=prob+perm(6,i)*(p**i)*(q**(6-i))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    n = int(input())
+    data = list(map(int, input().split()))
+    res = quartiles(data)
 
-print(round(prob,3)) 
+    fptr.write('\n'.join(map(str, res)))
+    fptr.write('\n')
+    fptr.close()
