@@ -1,7 +1,7 @@
-a=1.09
-b=1
-p=a/(a+b)
-q=b/(a+b)
+a=12
+b=10
+q=a/100
+p=1-q
 
 def factorial(z):
     n=1
@@ -11,8 +11,12 @@ def factorial(z):
 def perm(x,y):
     return factorial(x)/(factorial(x-y)*factorial(y))    
 
-prob=0    
-for i in range(3,7):
-    prob=prob+perm(6,i)*(p**i)*(q**(6-i))
+prob1=0    
+for i in range(0,3):
+    prob1=prob1+perm(10,i)*(q**i)*(p**(10-i))
+prob2=0 
+for i in range(2,11):
+    prob2=prob2+perm(10,i)*(q**i)*(p**(10-i))    
 
-print(round(prob,3)) 
+print(round(prob1,3))    
+print(round(prob2,3)) 
