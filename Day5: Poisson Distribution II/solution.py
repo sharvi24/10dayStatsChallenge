@@ -1,18 +1,5 @@
-a=1.09
-b=1
-p=a/(a+b)
-q=b/(a+b)
+lambda1=0.88
+lambda2=1.55
 
-def factorial(z):
-    n=1
-    for i in range(1,z+1):n=n*i
-    return n 
-
-def perm(x,y):
-    return factorial(x)/(factorial(x-y)*factorial(y))    
-
-prob=0    
-for i in range(3,7):
-    prob=prob+perm(6,i)*(p**i)*(q**(6-i))
-
-print(round(prob,3)) 
+print(round(160+40*(lambda1+lambda1**2),3))
+print(round(128+40*(lambda2+lambda2**2),3))
