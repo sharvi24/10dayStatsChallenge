@@ -1,14 +1,18 @@
-a=[95,85,80,70,60]
-b=[85,95,70,65,70]
+# import math
+# mean, std = 100*500, 80*10
 
-sum_a=sum(a)
-mean_a=sum_a/5
-sum_b=sum(b)
-mean_b=sum_b/5
+# print('{:.2f}'.format(mean-1.96*std))
+# print('{:.2f}'.format(mean+1.96*std))
 
-x_square=sum([i**2 for i in a])
-xy=sum([a[i]*b[i] for i in range(5)])
+from math import sqrt
 
-b= (5*xy-(sum_a*sum_b))/(5*x_square - (sum_a)**2)
-a=mean_b -b*mean_a
-print(round(a + b*80,3))
+s = int(input()) #100
+mean = int(input()) #500
+std = int(input())  #80
+interval = float(input())   #0.95
+z = float(input())          #1.96
+print(round(mean - (std / sqrt(s)) * z, 2))
+print(round(mean + (std / sqrt(s)) * z, 2))c
+
+# Task
+# You have a sample of  values from a population with mean 500 and with standard deviation 80 . Compute the interval that covers the middle  of the distribution of the sample mean; in other words, compute  and  such that . Use the value of . Note that  is the z-score.
